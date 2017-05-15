@@ -1,0 +1,4 @@
+- Tao mot folder ten la "Sequences_from_elm"  trong src
+- Chay python getSequenceFromElm.py
+- Download folder RVP_seq_output va cho vao folder src
+- Chayj python extract_features.py
