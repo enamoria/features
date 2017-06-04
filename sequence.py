@@ -136,7 +136,16 @@ class sequence:
         self.phosPos = int(phosPos)
         #  Standardize
         value = value.replace(" ", "")
-        self.windowValue = value[int(phosPos) - window/2 -1 : int(phosPos) - 1 + window/2 + 1]
+
+        if phosPos < window / 2:
+            self.windowValue = value[:phosPos - 1 + window / 2 + 1]
+
+        else:
+            if phosPos >= len(value) - window / 2:
+                self.windowValue = value[phosPos - 1 - window / 2:]
+            else:
+                self.windowValue = value[int(phosPos) - 1 - window / 2: int(phosPos) - 1 + window / 2 + 1]
+
         self.value = value
         self.accession = accession
         self.window = window

@@ -50,7 +50,9 @@ def feature_1_shannon_entropy(sequence, window=9):
     if phosPos >= n - window / 2:
         return entropy_Window(sequenceString[phosPos - 1 - window / 2:])
 
-    return entropy_Window(sequenceString[phosPos - window / 2:phosPos + window / 2 + 1])
+    return entropy_Window(sequenceString[phosPos - 1 - window / 2 :phosPos - 1 + window / 2 + 1])
+    # 012345678
+    # ABCDEFGHF
     # return sum(entropyElements)
 
     # probability = {}
@@ -116,12 +118,12 @@ def feature_2_relative_entropy(sequence, window=9):
     #         KLdistance[key] = 0
 
     if phosPos < window / 2:
-        return relativeEntropy_Window(sequenceString[:phosPos + window / 2 + 1])
+        return relativeEntropy_Window(sequenceString[:phosPos - 1 + window / 2 + 1])
 
     if phosPos >= n - window / 2:
-        return relativeEntropy_Window(sequenceString[phosPos - window / 2:])
+        return relativeEntropy_Window(sequenceString[phosPos - 1 - window / 2:])
 
-    return relativeEntropy_Window(sequenceString[phosPos - window / 2:phosPos + window / 2 + 1])
+    return relativeEntropy_Window(sequenceString[phosPos - 1 - window / 2 :phosPos - 1 + window / 2 + 1])
     # return sum(KLdistance.values())
 
 
@@ -148,16 +150,16 @@ def feature_4_12_ASA(sequence, window=9):
     phosPos = sequence.getPhosphorylationPosition()
 
     if phosPos < window / 2:
-        windowString = sequenceString[:phosPos + window / 2 + 1]
+        windowString = sequenceString[:phosPos - 1 + window / 2 + 1]
         begin = 0
         end = phosPos + window / 2
     else:
         if phosPos >= n - window / 2:
-            windowString = sequenceString[phosPos - window / 2:]
+            windowString = sequenceString[phosPos - 1 - window / 2:]
             begin = phosPos - window / 2
             end = n - 1
         else:
-            windowString = sequenceString[phosPos - window / 2:phosPos + window / 2 + 1]
+            windowString = sequenceString[phosPos - 1 - window / 2:phosPos - 1 + window / 2 + 1]
             begin = phosPos - window / 2
             end = phosPos + window / 2
 
@@ -287,12 +289,12 @@ def feature_434_493_socn(sequence, maxlag=30):
     n = sequence.getSize()
 
     if phosPos < window / 2:
-        return GetSequenceOrderCouplingNumberTotal(sequenceString[:phosPos + window / 2 + 1])
+        return GetSequenceOrderCouplingNumberTotal(sequenceString[:phosPos - 1 + window / 2 + 1])
 
     if phosPos >= n - window / 2:
-        return GetSequenceOrderCouplingNumberTotal(sequenceString[phosPos - window / 2:])
+        return GetSequenceOrderCouplingNumberTotal(sequenceString[phosPos - 1 - window / 2:])
 
-    return GetSequenceOrderCouplingNumberTotal(sequenceString[phosPos - window / 2:phosPos + window / 2 + 1])
+    return GetSequenceOrderCouplingNumberTotal(sequenceString[phosPos - 1 - window / 2:phosPos - 1 + window / 2 + 1])
 
     # return GetSequenceOrderCouplingNumberTotal(sequence.getValue())
 
@@ -315,12 +317,12 @@ def feature_494_593_quasi(sequence, maxlag=30):
     n = sequence.getSize()
 
     if phosPos < window / 2:
-        return GetQuasiSequenceOrder(sequenceString[:phosPos + window / 2 + 1])
+        return GetQuasiSequenceOrder(sequenceString[:phosPos - 1 + window / 2 + 1])
 
     if phosPos >= n - window / 2:
-        return GetQuasiSequenceOrder(sequenceString[phosPos - window / 2:])
+        return GetQuasiSequenceOrder(sequenceString[phosPos - 1 - window / 2:])
 
-    return GetQuasiSequenceOrder(sequenceString[phosPos - window / 2:phosPos + window / 2 + 1])
+    return GetQuasiSequenceOrder(sequenceString[phosPos - 1 - window / 2:phosPos - 1 + window / 2 + 1])
     # return GetQuasiSequenceOrder(sequence.getValue())
 
 # Test part
